@@ -33,6 +33,11 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 	    Route::post('/deactivate', 'AccountDeactivateController@store')->name('deactivate.store');
 
 	    /**
+	     * API Tokens
+	     */
+	    Route::get('/tokens', 'ApiTokensController@index')->name('tokens.index');
+
+	    /**
 		* Subscription
 		*/
 		Route::group([
@@ -88,4 +93,12 @@ Route::group([
 	function(){
 	Route::get('/', 'Subscription\SubscriptionController@index')->name('index');
 	Route::post('/', 'Subscription\SubscriptionController@store')->name('store');
+});
+
+Route::get('test', function(){
+	$when = now()->addMinutes(1);
+	$template = "<h3>Hello Mr, X</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, alias.</p>Thanks,<br><strong>Saas</strong>";
+	Illuminate\Support\Facades\Mail::to(['email1@example.com', 'email2@example.com', 'eemail3@example.com', 'email4@example.com'])
+	    ->later($when, new App\Mail\OrderConfirmed($template));
+	return 'Order Confirmed';    
 });

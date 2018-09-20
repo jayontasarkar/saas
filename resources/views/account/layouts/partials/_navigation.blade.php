@@ -16,6 +16,9 @@
 		    <a class="nav-link{{ return_if(on_page('*/deactivate'), ' active') }}"
 		       href="{{ route('account.deactivate.index') }}"
 		    >Deactivate Account</a>
+		    <a class="nav-link{{ return_if(on_page('*/tokens'), ' active') }}"
+		       href="{{ route('account.tokens.index') }}"
+		    >API Tokens</a>
 		</div>
 	</div>
 </div>
