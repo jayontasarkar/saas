@@ -16,8 +16,11 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-    	return view('dashboard');
+        $campaigns = $request->user()->campaigns;
+        $mailingLists = $request->user()->mailingLists;
+        
+        return view('dashboard', compact('campaigns', 'mailingLists'));
     }
 }

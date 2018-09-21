@@ -17,7 +17,7 @@ class PlanTableSeeder extends Seeder
             [
                 'name' => 'Monthly',
                 'slug' => 'monthly',
-                'gateway_id' => 'month_6',
+                'gateway_id' => 'plan_DddZPGhkC5RPQM',
                 'price' => 6.00,
                 'active' => true,
                 'teams_enabled' => false,
@@ -26,7 +26,7 @@ class PlanTableSeeder extends Seeder
             [
                 'name' => 'Yearly',
                 'slug' => 'yearly',
-                'gateway_id' => 'year_60',
+                'gateway_id' => 'plan_DddasLUBTVHv2M',
                 'price' => 60.00,
                 'active' => true,
                 'teams_enabled' => false,
@@ -35,7 +35,7 @@ class PlanTableSeeder extends Seeder
             [
                 'name' => 'Monthly for 10 users',
                 'slug' => 'monthly-for-10-users',
-                'gateway_id' => 'team_month_55',
+                'gateway_id' => 'plan_DddbyN0wcs4dmj',
                 'price' => 55.00,
                 'active' => true,
                 'teams_enabled' => true,

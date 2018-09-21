@@ -95,10 +95,20 @@ Route::group([
 	Route::post('/', 'Subscription\SubscriptionController@store')->name('store');
 });
 
+Route::group(['middleware' => ['auth'], 'namespace' => 'Mailing', 'prefix' => 'mailings', 'as' => 'mailings.'], function(){
+	Route::get('/', 'MailingListsController@index')->name('index');
+	Route::get('/{mailing}/subscribers', 'MailingListSubscribersController@index')->name('subscribers.index');
+});
+
 Route::get('test', function(){
-	$when = now()->addMinutes(1);
+	$when = now()->subMinutes(3);
 	$template = "<h3>Hello Mr, X</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, alias.</p>Thanks,<br><strong>Saas</strong>";
-	Illuminate\Support\Facades\Mail::to(['email1@example.com', 'email2@example.com', 'eemail3@example.com', 'email4@example.com'])
+	Illuminate\Support\Facades\Mail::to(['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'])
 	    ->later($when, new App\Mail\OrderConfirmed($template));
 	return 'Order Confirmed';    
+});
+
+Route::get('/test2', function(){
+	$campaign = App\Models\Campaign::first();
+	return $campaign->subscribers();
 });
