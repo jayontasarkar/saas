@@ -17,7 +17,7 @@ class StripeServiceProvider extends ServiceProvider
     {
         Stripe::setApiKey(config('services.stripe.secret'));
 
-        Cashier::useCurrency('usd', '$');
+        // Cashier::useCurrency('usd', '$');
     }
 
     /**

@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 		* Subscription
 		*/
 		Route::group([
-				'namespace' => 'Subscription', 'middleware' => 'subscription.owner', 
+				'namespace' => 'Subscription', 'middleware' => 'subscription.owner',
 				'prefix' => 'subscription', 'as' => 'subscription.'
 		], function(){
 			// Cancel
@@ -88,8 +88,8 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.', 'middleware' => 'subscripti
  * Subscription
  */
 Route::group([
-		'prefix' => 'subscription', 'as' => 'subscription.', 
-		'middleware' => ['register.subscription', 'subscription.inactive']], 
+		'prefix' => 'subscription', 'as' => 'subscription.',
+		'middleware' => ['register.subscription', 'subscription.inactive']],
 	function(){
 	Route::get('/', 'Subscription\SubscriptionController@index')->name('index');
 	Route::post('/', 'Subscription\SubscriptionController@store')->name('store');
@@ -105,10 +105,15 @@ Route::get('test', function(){
 	$template = "<h3>Hello Mr, X</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, alias.</p>Thanks,<br><strong>Saas</strong>";
 	Illuminate\Support\Facades\Mail::to(['email1@example.com', 'email2@example.com', 'email3@example.com', 'email4@example.com'])
 	    ->later($when, new App\Mail\OrderConfirmed($template));
-	return 'Order Confirmed';    
+	return 'Order Confirmed';
 });
 
 Route::get('/test2', function(){
 	$campaign = App\Models\Campaign::first();
 	return $campaign->subscribers();
 });
+
+Route::post(
+    'stripe/webhook',
+    '\App\Http\Controllers\WebhookController@handleWebhook'
+);
