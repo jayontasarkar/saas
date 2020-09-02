@@ -20,7 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "bootstrap-vue": "^2.0.0-rc.11",
+        "bootstrap-vue": "^2.0.0-rc.12",
         "vue-ckeditor2": "^2.0.9",
         "vue-multiselect": "^2.1.0"
     }
